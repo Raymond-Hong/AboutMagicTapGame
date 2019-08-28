@@ -1,0 +1,52 @@
+li{
+      list-style: none;
+    }
+    button {
+      padding: 5px;
+      border-radius: 10px;
+      color: aliceblue;
+      background-color: orange;
+      margin: 5px auto;
+    }
+    button:disabled {
+      background-color: gray;
+    }
+    .container{
+      padding: 10px;
+      margin: 0 auto;
+      font-size: 18px;
+      overflow: scroll;
+      background-color: beige;
+    }
+    input{
+      height: 20px;
+      border-radius: 5px;
+      padding: 5px;
+      margin: 5px auto;
+      width: 25%;
+    }
+    .monster li,.head{
+      text-align: center;
+      width: 90%;
+      padding: 20px 2px;
+    }
+    .monster span:nth-child(n+2){
+      margin-left: 10px;
+      padding-left: 10px;
+      border-left: 1px solid salmon;
+    }
+    .monster li:nth-child(2n+1){
+      background-color: aliceblue;
+    }
+    .player{
+      padding-left: 20px;
+    }
+    .player li>span{
+      width: 100px;
+      text-align: right;
+      display: inline-block;
+    }
+    .player .content{
+      text-align: left;
+      margin: 2px 100px;
+    }
