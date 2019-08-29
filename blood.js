@@ -35,8 +35,12 @@
   
   const caclTotal = (obj, playerData) => {
     return Object.keys(obj).reduce((pre, key)=> {
-      updateNeedBlood.call(obj[key], playerData);
-      // debugger
+      if (key != 'proxy') {
+        updateNeedBlood.call(obj[key], playerData);
+      } else {
+        return pre;
+      }
+      playerData.awards += obj[key].awards * obj[key].count;
       if (typeof pre != 'number') {
         return '打不过';
       } else {

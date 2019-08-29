@@ -42,7 +42,8 @@
             </li>
         </ul>
         <div class="content">
-            攻: {{myAttack}} , 防: {{myDefense}} , 加攻: {{addAttack}} , 加防: {{addDefense}}, 金币剩余: {{goldCoinLeft}}
+            攻: {{myAttack}} , 防: {{myDefense}} , 加攻: {{addAttack}} , 加防: {{addDefense}}, 金币剩余: {{goldCoinLeft}},
+            奖励: {{awards}}
             总消耗:
           {{needTotalBlood}}
         </div>
@@ -93,6 +94,7 @@
         myGoldCoin: localStorage.getItem('goldCoin')|0,
         addBase: localStorage.getItem('addBase')|0,
         needTotalBlood: 0,
+        awards: 0
       }
       let playerData = Object.assign({}, initData);
 
@@ -113,11 +115,12 @@
       function updateTotalBlood () {
         playerData.needTotalBlood = _blood.caclTotal(htmlData, playerData);
         let stateProps = ['needBlood', 'needTotalBlood', 'myGoldCoin',
-        'addAttack', 'addDefense', 'originGoldCoin', 'goldCoinLeft', 'addBase']
+        'addAttack', 'addDefense', 'originGoldCoin', 'goldCoinLeft', 'addBase', 'awards']
         updateTotalBlood = function (key) {
           if (stateProps.includes(key)) { //计算值更新跳过 状态值更新才更新页面
             return;
           }
+          playerData.awards = 0;
           playerData.proxy.needTotalBlood = _blood.caclTotal(htmlData, playerData);
         }
       }
