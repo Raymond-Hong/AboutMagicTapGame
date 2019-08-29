@@ -87,12 +87,14 @@
         localStorage.setItem('defense', playerData.myDefense);
         localStorage.setItem('goldCoin', playerData.myGoldCoin);
         localStorage.setItem('addBase', playerData.addBase);
+        localStorage.setItem('originGoldCoin', playerData.originGoldCoin);
       }
       let initData = {
         myAttack: localStorage.getItem('attack')|0,
         myDefense: localStorage.getItem('defense')|0,
         myGoldCoin: localStorage.getItem('goldCoin')|0,
         addBase: localStorage.getItem('addBase')|0,
+        originGoldCoin: localStorage.getItem('originGoldCoin')|0,
         needTotalBlood: 0,
         awards: 0
       }
