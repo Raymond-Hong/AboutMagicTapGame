@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>About Magic Tap Game</title>
-  <link rel="stylesheet" href="./index.css">
-  <script src="./autoResponsive.js"></script>
-  <script src="./monsters.js"></script>
-  <script src="./blood.js"></script>
-  <script src="./shop.js"></script>
-</head>
-<body>
-  <div class="container">
-      <button onclick = "trans(event)">反先攻</button>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About Magic Tap Game</title>
+    <link rel="stylesheet" href="./index.css">
+    <script src="./autoResponsive.js"></script>
+    <script src="./monsters.js"></script>
+    <script src="./blood.js"></script>
+    <script src="./shop.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <button onclick="trans(event)">反先攻</button>
       <div class="player">
         <button onclick="addAttack()">加攻击</button>
         <button onclick="addDefense()">加防御</button>
@@ -34,34 +36,35 @@
           <li>
             <span>金币:</span>
             <input type="number" min="0" name="myGoldCoin" data-model="myGoldCoin">
-            </li>
+          </li>
           <li>
             <span>初始金币:</span>
             <input type="number" min="0" data-model="originGoldCoin">
             <button onclick="goldCoinSure()">确认</button>
-            </li>
+          </li>
         </ul>
         <div class="content">
-            攻: {{myAttack}} , 防: {{myDefense}} , 加攻: {{addAttack}} , 加防: {{addDefense}}, 金币剩余: {{goldCoinLeft}},
-            奖励: {{awards}}
-            总消耗:
+          攻: {{myAttack}} , 防: {{myDefense}} , 加攻: {{addAttack}} , 加防: {{addDefense}}, 金币剩余: {{goldCoinLeft}},
+          奖励: {{awards}}
+          总消耗:
           {{needTotalBlood}}
         </div>
       </div>
       <div class="monster">
-          <div class="head">
-            <!-- <div>
+        <div class="head">
+          <!-- <div>
               <input type="checkbox" data-model="">
             </div> -->
-            <span>名字</span>
-            <span>数量</span>
-            <span>血</span>
-            <span>攻</span>
-            <span>防</span>
-          </div>
+          <span>名字</span>
+          <span>数量</span>
+          <span>血</span>
+          <span>攻</span>
+          <span>防</span>
+        </div>
         <ul>
           <li data-key="rm1990">
-            <span><!--  名字: -->{{name}}</span>
+            <span>
+              <!--  名字: -->{{name}}</span>
             <span>
               <!-- 数量:  -->
               <input type="number" data-model="{{count}}" min="0">
@@ -80,7 +83,7 @@
         </ul>
       </div>
     </div>
-  </div>
+    </div>
     <script>
       function savePlayerData() {
         localStorage.setItem('attack', playerData.myAttack);
@@ -90,11 +93,11 @@
         localStorage.setItem('originGoldCoin', playerData.originGoldCoin);
       }
       let initData = {
-        myAttack: localStorage.getItem('attack')|0,
-        myDefense: localStorage.getItem('defense')|0,
-        myGoldCoin: localStorage.getItem('goldCoin')|0,
-        addBase: localStorage.getItem('addBase')|0,
-        originGoldCoin: localStorage.getItem('originGoldCoin')|0,
+        myAttack: localStorage.getItem('attack') | 0,
+        myDefense: localStorage.getItem('defense') | 0,
+        myGoldCoin: localStorage.getItem('goldCoin') | 0,
+        addBase: localStorage.getItem('addBase') | 0,
+        originGoldCoin: localStorage.getItem('originGoldCoin') | 0,
         needTotalBlood: 0,
         awards: 0
       }
@@ -105,19 +108,19 @@
       ulTemplate.innerHTML = ul.innerHTML;
       ul.innerHTML = '';
       let htmlData = {}, tempStr = ulTemplate.innerHTML;
-      ul.innerHTML = monsters.reduce((p,m)=>{
+      ul.innerHTML = monsters.reduce((p, m) => {
         p += tempStr.replace(/rm1990/gm, m.name).replace(/{{[\s]*([A-z]+)[\s]*}}/gm, function ($, $1) {
           return "{{" + m.name + "." + $1 + "}}";
         });
         _blood.updateNeedBlood.call(m, playerData);
         htmlData[m.name] = m;
         return p;
-      },'');
-      
-      function updateTotalBlood () {
+      }, '');
+
+      function updateTotalBlood() {
         playerData.needTotalBlood = _blood.caclTotal(htmlData, playerData);
         let stateProps = ['needBlood', 'needTotalBlood', 'myGoldCoin',
-        'addAttack', 'addDefense', 'originGoldCoin', 'goldCoinLeft', 'addBase', 'awards']
+          'addAttack', 'addDefense', 'originGoldCoin', 'goldCoinLeft', 'addBase', 'awards']
         updateTotalBlood = function (key) {
           if (stateProps.includes(key)) { //计算值更新跳过 状态值更新才更新页面
             return;
@@ -132,29 +135,29 @@
       _$.init(playerData, player, updateTotalBlood);
 
       // const ADD = 8;
-      function trans (e) {
+      function trans(e) {
         trans = _blood.transAttack(e, playerData);
       }
-      function addAttack () {
+      function addAttack() {
         playerData.proxy.myAttack += playerData.addBase;
       }
-      function addDefense () {
-        playerData.proxy.myDefense += playerData.addBase*2;
+      function addDefense() {
+        playerData.proxy.myDefense += playerData.addBase * 2;
       }
-      function reSet () {
+      function reSet() {
         Object.assign(playerData, initData);
         document.getElementsByName('useMagic')[0].disabled = false;
         playerData.proxy.myAttack = playerData.myAttack;
       }
-      function useMagic (event) {
+      function useMagic(event) {
         playerData.proxy.myAttack *= 1.03;
-        playerData.proxy.myAttack = playerData.proxy.myAttack|0;
+        playerData.proxy.myAttack = playerData.proxy.myAttack | 0;
         playerData.proxy.myDefense *= 1.03;
-        playerData.proxy.myDefense = playerData.proxy.myDefense|0;
+        playerData.proxy.myDefense = playerData.proxy.myDefense | 0;
         event.target.disabled = true;
       }
-      function goldCoinSure () {
-        if(_paid.isOriginNeedPaid(playerData.originGoldCoin)){
+      function goldCoinSure() {
+        if (_paid.isOriginNeedPaid(playerData.originGoldCoin)) {
           let result = _paid.canByTimesAndLeft(playerData.myGoldCoin, playerData.originGoldCoin);
           let t = result.times;
           playerData.goldCoinLeft = result.left;
@@ -177,5 +180,6 @@
         }
       }
     </script>
-</body>
+  </body>
+
 </html>
