@@ -168,6 +168,54 @@ var monsters = [
     count: 0
   },
   {
+    name:'史莱姆王',
+    blood: 360,
+    attack: 310,
+    defense: 20,
+    awards: 40,
+    count: 0
+  },
+  {
+    name:'初级巫师',
+    blood: 220,
+    attack: 370,
+    defense: 110,
+    awards: 80,
+    count: 0
+  },
+  {
+    name:'吸血蝙蝠',
+    blood: 200,
+    attack: 390,
+    defense: 90,
+    awards: 50,
+    count: 0
+  },
+  {
+    name:'高级巫师',
+    blood: 200,
+    attack: 380,
+    defense: 130,
+    awards: 90,
+    count: 0
+  },
+  {
+    name:'魔法警卫',
+    blood: 230,
+    attack: 450,
+    defense: 100,
+    awards: 100,
+    count: 0
+  },
+  {
+    name:'黑暗骑士',
+    blood: 180,
+    attack: 430,
+    defense: 210,
+    awards: 120,
+    count: 0
+  },
+  {
     name:'假魔王',
     blood: 800,
     attack: 500,

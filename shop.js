@@ -61,6 +61,8 @@
       for (let i=0;i<t;i++) {
         addAttackSimulation.call(this)
       }
+      // this.myAttack *= 1.03;
+      // this.myAttack = this.myAttack|0;
       function addAttackSimulation () {
         this.myAttack += ADD;
       }
@@ -69,6 +71,8 @@
       for (let i=0;i<t;i++) {
         addDefenseSimulation.call(this)
       }
+      // this.myDefense *= 1.03;
+      // this.myDefense = this.myDefense|0;
       function addDefenseSimulation () {
         this.myDefense += ADD*2;
       }
