@@ -86,18 +86,18 @@
     </div>
     <script>
       function savePlayerData() {
-        localStorage.setItem('attack', playerData.myAttack);
-        localStorage.setItem('defense', playerData.myDefense);
-        localStorage.setItem('goldCoin', playerData.myGoldCoin);
-        localStorage.setItem('addBase', playerData.addBase);
-        localStorage.setItem('originGoldCoin', playerData.originGoldCoin);
+        sessionStorage.setItem('attack', playerData.myAttack);
+        sessionStorage.setItem('defense', playerData.myDefense);
+        sessionStorage.setItem('goldCoin', playerData.myGoldCoin);
+        sessionStorage.setItem('addBase', playerData.addBase);
+        sessionStorage.setItem('originGoldCoin', playerData.originGoldCoin);
       }
       let initData = {
-        myAttack: localStorage.getItem('attack') | 0,
-        myDefense: localStorage.getItem('defense') | 0,
-        myGoldCoin: localStorage.getItem('goldCoin') | 0,
-        addBase: localStorage.getItem('addBase') | 0,
-        originGoldCoin: localStorage.getItem('originGoldCoin') | 0,
+        myAttack: sessionStorage.getItem('attack') | 0,
+        myDefense: sessionStorage.getItem('defense') | 0,
+        myGoldCoin: sessionStorage.getItem('goldCoin') | 0,
+        addBase: sessionStorage.getItem('addBase') | 0,
+        originGoldCoin: sessionStorage.getItem('originGoldCoin') | 0,
         needTotalBlood: 0,
         awards: 0
       }
